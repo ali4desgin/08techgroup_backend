@@ -63,8 +63,34 @@
 }
 
 
+.heading-text-center {
+	text-align:center;
+	color:#777;
+	margin: 20px 0px;
+}
 
 
+
+.tbl_area {
+	    margin-top: 30px;
+}
+
+.gray_1 {
+	color:#DDD;
+}
+.gray_2 {
+	color:#777;
+}
+
+
+.footer {
+	margin-top:50px;
+	}
+
+
+th {
+	text-align:center
+}
 /*dashboard page*/
 .static_tab h5 {
     text-align: center
@@ -94,3 +120,16 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+
+/*users page*/
+
+
+
+
+
+
+
+
+
+

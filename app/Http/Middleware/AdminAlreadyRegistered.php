@@ -4,8 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Session;
-
-class AdminLogin
+class AdminAlreadyRegistered
 {
     /**
      * Handle an incoming request.
@@ -16,9 +15,8 @@ class AdminLogin
      */
     public function handle($request, Closure $next)
     {
-
-        // if(!Session::has('adminSession')) {
-//             return redirect('/cpanel');
+        // if(Session::has('adminSession')) {
+//             return redirect('/cpanel/dashboard');
 //         }
         return $next($request);
     }

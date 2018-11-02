@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Package;
-
+use \App\Package, \App\Profit,\App\DateHelper;
 class PackageController extends Controller
 {
     //
     public function index(Request $request){
 
        
-
+		$today = DateHelper::returnToday();
 
 
         if($request->method() == "POST"){
@@ -37,8 +36,20 @@ class PackageController extends Controller
         }
 
         
-        $packages = Package::orderBy("id","desc")->get()->toArray();
-        return view("Dashboard.Package.index",compact("packages"));
+        $dpackages = Package::orderBy("id","desc")->get()->toArray();
+		$packages = [];
+		
+		foreach($dpackages as $package){
+			$profit = Profit::where("package_id", $package['id'])->where("daily_date",$today)->first();
+				if(empty($profit)){
+					$package['has_today_profit'] = false; 
+				}else{
+					$package['has_today_profit'] = true; 
+					$package['today_profit'] = $profit;
+				}
+				$packages[] = $package;
+		}
+        return view("Dashboard.Package.index",compact("packages","today"));
     }
 
 
@@ -55,4 +66,40 @@ class PackageController extends Controller
 
         return view("Dashboard.Package.view",compact("package"));
     }
+	
+	
+	public function delete($package_id){
+		 Package::where("id","=",$package_id)->delete();
+		return back();
+		
+	}
+	
+	
+	// ajax call
+	public function package_json_details($package_id){
+		$package = Package::where("id",$package_id)->first(); 
+		if(empty($package)){
+			return json_encode(array("response"=>false,"message"=>"الرجاء اعادة اختيار الباقة ، الباقة غير صالحة"));
+		}
+		return json_encode(array("response"=>true,"message"=>"تم بنجاح","result" => $package));   
+	}
+	
+	
+	public function add_daily_profit(Request $request){
+		
+        $request->validate([
+            'value' => 'required',
+            'mode' => 'required',
+            'package_id' => 'required',
+			'day' => 'required'
+        ]);
+		
+		$prof = new Profit;
+		$prof->package_id = $request->input("package_id");
+		$prof->type = $request->input("mode");
+		$prof->daily_date = $request->input("day");
+		$prof->profit = $request->input("value");
+		$prof->save();
+		return back();
+	}
 }

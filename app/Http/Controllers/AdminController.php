@@ -30,7 +30,7 @@ class AdminController extends Controller
                 $cpassword = $admin->password;
                 if(password_verify($password,$cpassword)){
                     Session::put('adminSession', 'logged');
-                   return  redirect("/dashboard");
+                   return  redirect("/cpanel/dashboard");
                 }else{
                     $custom_errors[] = "البيانات المدخلة غير صحيحة"; 
                 }
