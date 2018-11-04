@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackEnd;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use \App\Package, \App\Profit,\App\DateHelper,\App\PackageFeatures;
 class PackageController extends Controller
 {
@@ -49,7 +50,7 @@ class PackageController extends Controller
 				}
 				$packages[] = $package;
 		}
-        return view("Dashboard.Package.index",compact("packages","today"));
+        return view("BackEnd.Dashboard.Package.index",compact("packages","today"));
     }
 
 
@@ -64,7 +65,7 @@ class PackageController extends Controller
         
         $package_customer = ["ali","osama","hussen"];
 
-        return view("Dashboard.Package.view",compact("package"));
+        return view("BackEnd.Dashboard.Package.view",compact("package"));
     }
 	
 	
@@ -134,7 +135,7 @@ class PackageController extends Controller
 		
 		
 		
-		return view("Dashboard.Package.features",compact("package","features","isAdded"));
+		return view("BackEnd.Dashboard.Package.features",compact("package","features","isAdded"));
 		
 	}
 	
@@ -176,6 +177,6 @@ class PackageController extends Controller
  		   $package = Package::where("id","=",$package_id)->first();
         }
 		
-		return view("Dashboard.Package.edit",compact("package","isEdited"));
+		return view("BackEnd.Dashboard.Package.edit",compact("package","isEdited"));
 	}
 }

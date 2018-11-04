@@ -1,4 +1,4 @@
-@extends("Layout.Dashboard.master")
+@extends("BackEnd.Layout.Dashboard.master")
 
 @section("content")
 	<h1 class="heading-text-center">تفاصيل المستخدم</h1>

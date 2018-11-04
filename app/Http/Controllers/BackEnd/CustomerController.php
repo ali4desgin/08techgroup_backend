@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackEnd;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use \App\Customer;
 class CustomerController extends Controller
 {
@@ -23,7 +24,7 @@ class CustomerController extends Controller
 		}
 		
 		$stats['cus_count'] = Customer::get()->count();
-		return view("Dashboard.Customers.index",compact("customers","stats","search_text","empty_error_text"));
+		return view("BackEnd.Dashboard.Customers.index",compact("customers","stats","search_text","empty_error_text"));
 	}
 	
 	
@@ -64,7 +65,7 @@ class CustomerController extends Controller
 				$customer = Customer::where("id","=",$customer_id)->first();
 		}
 		
-		return view("Dashboard.Customers.edit",compact("customer","pop"));
+		return view("BackEnd.Dashboard.Customers.edit",compact("customer","pop"));
 	}
 
 
@@ -77,7 +78,7 @@ class CustomerController extends Controller
 		$customer = Customer::where("id","=",$customer_id)->first();
 		
 	
-		return view("Dashboard.Customers.view",compact("customer"));
+		return view("BackEnd.Dashboard.Customers.view",compact("customer"));
 	}
 	
 	public function delete($customer_id){

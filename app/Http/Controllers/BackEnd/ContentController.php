@@ -83,6 +83,6 @@ class ContentController extends Controller
 		
 		
 		//return $header_json;
-		return view("Dashboard.Content.index",compact("editDone","header","footer"));
+		return view("BackEnd.Dashboard.Content.index",compact("editDone","header","footer"));
 	}
 }

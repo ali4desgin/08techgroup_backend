@@ -1,4 +1,4 @@
-@extends("Layout.master")
+@extends("BackEnd.Layout.master")
 
 @section("content")
 

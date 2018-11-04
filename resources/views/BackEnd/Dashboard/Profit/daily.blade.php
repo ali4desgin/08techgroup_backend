@@ -1,4 +1,4 @@
-@extends("Layout.Dashboard.master")
+@extends("BackEnd.Layout.Dashboard.master")
 @section("content")
 
             <div class="text-center mar-bottm15">

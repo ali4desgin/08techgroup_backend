@@ -1,4 +1,4 @@
-@extends("layout.Dashboard.master")
+@extends("BackEnd.Layout.Dashboard.master")
 
 
 @section("content")

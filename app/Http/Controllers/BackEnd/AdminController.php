@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\BackEnd;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use \App\Admin;
 use Session;
 class AdminController extends Controller
@@ -42,6 +43,6 @@ class AdminController extends Controller
         }
 
 
-        return view("login",compact("custom_errors"));
+        return view("BackEnd.login",compact("custom_errors"));
     }
 }
