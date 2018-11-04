@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Package, \App\Profit,\App\DateHelper;
+use \App\Package, \App\Profit,\App\DateHelper,\App\PackageFeatures;
 class PackageController extends Controller
 {
     //
@@ -101,5 +101,81 @@ class PackageController extends Controller
 		$prof->profit = $request->input("value");
 		$prof->save();
 		return back();
+	}
+	
+	
+	public function features($package_id,Request $request){
+		$isAdded = false;
+        $package = Package::where("id","=",$package_id)->first();
+        if(empty($package)){
+            return back();
+        
+		}
+		
+		if($request->method()== "POST"){
+	        $request->validate([
+	            'ar' => 'required',
+	            'en' => 'required'
+	        ]);
+				
+				$feat = new PackageFeatures;
+				$feat->package_id = $package_id;
+				$feat->ar_feature = $request->input("ar");
+				$feat->en_feature = $request->input("en");
+				$feat->save();
+				$isAdded = true;
+		}
+		
+		
+		$features = PackageFeatures::where('package_id',$package_id)->get()->toArray();
+		
+		
+		
+		
+		
+		
+		return view("Dashboard.Package.features",compact("package","features","isAdded"));
+		
+	}
+	
+	public function remove_feature($feature_id){
+	 		PackageFeatures::where("id","=",$feature_id)->delete();
+			return back();
+		//return $feature_id;
+	}
+	
+	
+	public function edit($package_id,Request $request){
+		$isEdited = false;
+        $package = Package::where("id","=",$package_id)->first();
+        if(empty($package)){
+            return back();
+        
+		}
+		
+        if($request->method() == "POST"){
+
+            $request->validate([
+                'ar_title' => 'required',
+                'en_title' => 'required',
+                'ar_note' => 'required',
+                'en_note' => 'required',
+                'price' => 'required',
+            ]);
+
+
+
+            $package =  Package::where("id",$package_id)->update([
+            	"ar_title" => 	$request->input("ar_title"),
+				"en_title" => 	$request->input("en_title"),
+				"price" => 	$request->input("price"),
+				"ar_note" => 	$request->input("ar_note"),
+				"en_note" => 	$request->input("en_note"),
+            ]);
+            $isEdited = true;
+ 		   $package = Package::where("id","=",$package_id)->first();
+        }
+		
+		return view("Dashboard.Package.edit",compact("package","isEdited"));
 	}
 }

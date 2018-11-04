@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="panel-footer">
 										<div class="form-group">
-                                        <a href="{{ url('edit_package/' . $package['id']) }}"
+                                        <a href="{{ url('adminpanel/package/edit/' . $package['id']) }}"
 										 class="btn btn-primary btn-sm">
 										 <i class="fa fa-edit"></i> تعديل </a>
                                         <a href="{{ url('view_package/' . $package['id']) }}"
@@ -74,7 +74,7 @@
 									<div class="form-group">
 										
                                         <a 
-										href="{{ url('package_features/' . $package['id']) }}"
+										href="{{ url('adminpanel/package/features/' . $package['id']) }}"
 										 class="btn btn-warning btn-sm">
 										 <i class="fa fa-bars"></i> المميزات </a>
                                         <a href="{{url('/adminpanel/package/delete/'.

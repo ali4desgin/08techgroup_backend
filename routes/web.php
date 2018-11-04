@@ -29,6 +29,9 @@ Route::group(['prefix' => 'adminpanel'],function(){
 			Route::match(['get', 'post'],'/edit/{package_id}', 'PackageController@edit');
 			Route::match(['get', 'post'],'/view/{package_id}', 'PackageController@view');
 			Route::post('/add_daily_profit', 'PackageController@add_daily_profit');
+			Route::match(['get', 'post'],'edit/{package_id}', 'PackageController@edit');
+			Route::match(['get', 'post'],'/features/{package_id}', 'PackageController@features');
+			Route::get('/remove_feature/{feature_id}', 'PackageController@remove_feature');
 		});
 		
 		
@@ -42,6 +45,8 @@ Route::group(['prefix' => 'adminpanel'],function(){
 			Route::match(['get', 'post'],'/edit/{customer_id}', 'CustomerController@edit');
 			Route::match(['get', 'post'],'/view/{customer_id}', 'CustomerController@view');
 		});
+		
+		
 		
 		
 		// profits
@@ -59,6 +64,13 @@ Route::group(['prefix' => 'adminpanel'],function(){
 			Route::match(['get', 'post'],'/package/details/{package_id}', 'PackageController@package_json_details');
 		});
 		
+		
+		
+		
+		// content pages
+		Route::group(['prefix' => 'content'],function(){ 
+			Route::match(['get', 'post'],'/','BackEnd\ContentController@index');
+		});
 		
 	});
 	

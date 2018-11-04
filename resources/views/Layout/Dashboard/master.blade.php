@@ -44,7 +44,7 @@
                 <li><a href="{{ url('adminpanel/daily_profits') }}"> <i class="fa fa-home"></i>   الارباح اليومية</a></li>
                 <li><a href="#"> <i class="fa fa-home"></i> سجلات الدفع</a></li>
                 <li><a href="#"> <i class="fa fa-home"></i>   ادارة العناوين</a></li>
-                <li><a href="#"> <i class="fa fa-home"></i> ادارة المحتوى</a></li>
+                <li><a href="{{ url('adminpanel/content') }}"> <i class="fa fa-home"></i> ادارة المحتوى</a></li>
             </ul>
             
             </div><!-- /.navbar-collapse -->
