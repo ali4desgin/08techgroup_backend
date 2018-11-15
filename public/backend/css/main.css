@@ -45,6 +45,13 @@
 /*login page styles*/
 
 
+.borderbottm {
+	border-bottom: 1px solid #000;
+}
+.mar15 {
+	margin: 15px;
+}
+
 
 .login_area {
     width: 500px;
@@ -90,6 +97,18 @@
 
 th {
 	text-align:center
+}
+
+
+
+.no-decoration-in-a {
+	text-decoration:none;
+}
+
+
+.gre_block {
+    color: #208022;
+    font-weight: bold;
 }
 /*dashboard page*/
 .static_tab h5 {

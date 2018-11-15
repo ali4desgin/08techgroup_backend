@@ -83,6 +83,16 @@ return [
     | connection. You may also set the "password" value below this one.
     |
     */
+	
+	/*
+	
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=apps.developer.sd@gmail.com
+MAIL_PASSWORD=z7^sN^E6cH
+MAIL_ENCRYPTION=tls
+	*/
 
     'username' => env('MAIL_USERNAME'),
 

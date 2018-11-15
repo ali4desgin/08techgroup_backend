@@ -119,7 +119,7 @@
 				<td>{{ $customer->country }}</td>
 				<td>الفضية</td>
 				<td>
-					<a href="{{ url( '/adminpanel/customer_phistory/' . $customer->id ) }}" class="btn btn-success btn-sm">
+					<a href="{{ url( '/adminpanel/customer/payments/' . $customer->id ) }}" class="btn btn-success btn-sm">
 						<i class="fa fa-landmark"></i> سجلات الدفع
 					</a>
 					<a href="{{ url( '/adminpanel/customer/edit/' . $customer->id ) }}" class="btn btn-warning btn-sm">

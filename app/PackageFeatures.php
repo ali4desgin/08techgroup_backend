@@ -10,4 +10,10 @@ class PackageFeatures extends Model
 	
 	protected $table = "package_features";
 	
+	public function package()
+    {
+		
+        // return $this->belongsTo('App\Package');
+    }    
+	
 }

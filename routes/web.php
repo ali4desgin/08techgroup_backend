@@ -11,6 +11,18 @@
 |
 */
 
+
+// forntend routes
+Route::match(['get','post'],"/","FrontEnd\HomeController@index");
+Route::match(['get','post'],"register","FrontEnd\HomeController@register");
+
+
+Route::match(['get','post'],"checkout","FrontEnd\PaymentsController@index");
+
+
+
+
+// admin panel routes
 Route::group(['prefix' => 'adminpanel'],function(){
 	
 	
@@ -30,7 +42,7 @@ Route::group(['prefix' => 'adminpanel'],function(){
 			Route::match(['get', 'post'],'/view/{package_id}', 'BackEnd\PackageController@view');
 			Route::post('/add_daily_profit', 'BackEnd\PackageController@add_daily_profit');
 			Route::match(['get', 'post'],'edit/{package_id}', 'BackEnd\PackageController@edit');
-			Route::match(['get', 'post'],'/features/{package_id}', 'PackageController@features');
+			Route::match(['get', 'post'],'/features/{package_id}', 'BackEnd\PackageController@features');
 			Route::get('/remove_feature/{feature_id}', 'BackEnd\PackageController@remove_feature');
 		});
 		
@@ -44,6 +56,7 @@ Route::group(['prefix' => 'adminpanel'],function(){
 			Route::match(['get', 'post'],'/delete/{customer_id}', 'BackEnd\CustomerController@delete');
 			Route::match(['get', 'post'],'/edit/{customer_id}', 'BackEnd\CustomerController@edit');
 			Route::match(['get', 'post'],'/view/{customer_id}', 'BackEnd\CustomerController@view');
+			Route::match(['get', 'post'],'/payments/{customer_id}', 'BackEnd\CustomerController@payments');
 		});
 		
 		
@@ -72,6 +85,37 @@ Route::group(['prefix' => 'adminpanel'],function(){
 			Route::match(['get', 'post'],'/','BackEnd\ContentController@index');
 		});
 		
+		
+		
+		// payments gateways
+		Route::group(['prefix' => 'paymentsgateways'],function(){ 
+			Route::match(['get', 'post'],'/','BackEnd\DashboardController@payments_gateways');
+		});
+		
+		Route::match(['get','post'],"gateway/{payment_id}",'BackEnd\DashboardController@gateway');
+		
+		Route::match(['get','post'],"notifiactions",'BackEnd\DashboardController@notifiactions');
+		
+		Route::get("notificationreaded/{notification_id}",'BackEnd\DashboardController@read_notify');
+		
+		
+		
+		
+		
+		
+		
+		//payments
+		Route::get("payments",'BackEnd\PaymentsController@index');
+		
+		
+		
+		//advertisers
+		Route::get("advertisers",'BackEnd\AdvertisersController@index');
+		
+		
+		// logout
+		
+		Route::get("logout","BackEnd\AdminController@logout");
 	});
 	
 	

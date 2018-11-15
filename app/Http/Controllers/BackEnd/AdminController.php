@@ -31,7 +31,7 @@ class AdminController extends Controller
                 $cpassword = $admin->password;
                 if(password_verify($password,$cpassword)){
                     Session::put('adminSession', 'logged');
-                   return  redirect("/cpanel/dashboard");
+                   return  redirect("adminpanel/dashboard");
                 }else{
                     $custom_errors[] = "البيانات المدخلة غير صحيحة"; 
                 }
@@ -45,4 +45,14 @@ class AdminController extends Controller
 
         return view("BackEnd.login",compact("custom_errors"));
     }
+	
+	
+	
+	public function logout(Request $request)
+	{
+		$request->session()->forget('adminSession');
+
+		return redirect("adminpanel");
+		
+	}
 }

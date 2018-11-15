@@ -1,0 +1,16 @@
+{
+	
+	"development":{
+		"account_number":"xxxxxxxx",
+		"mbok_number":"http://08tech.development-master.com/blockchain/notify.php",
+		"phone_number":"http://08tech.development-master.com/blockchain/notify.php"
+	},
+	"production":{
+		"account_number":"xxxxxxxx",
+		"mbok_number":"http://08tech.development-master.com/blockchain/notify.php",
+		"phone_number":"http://08tech.development-master.com/blockchain/notify.php"
+	}
+	
+	
+	
+}

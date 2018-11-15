@@ -4,7 +4,7 @@ namespace App\Http\Controllers\BackEnd;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use \App\Customer;
+use \App\Customer,\App\PaymentsHistory;
 class CustomerController extends Controller
 {
     //
@@ -85,6 +85,18 @@ class CustomerController extends Controller
 		$customer = Customer::where("id","=",$customer_id)->delete();
 		return back();
 		
+	}
+	
+	
+	
+	public function payments($customer_id){
+		if(!is_numeric($customer_id)){
+			return back();
+		}
+		
+		$customer = Customer::where("id","=",$customer_id)->first();
+		$payments = PaymentsHistory::where('customer_id',$customer_id)->paginate(50);
+		return view("BackEnd.Dashboard.Customers.payments",compact("customer","payments"));
 	}
 	
 }

@@ -3,7 +3,7 @@
 @section("content")
 
         <div class="login_area">
-            <form method="POST" action="/">
+            <form method="POST">
             @csrf
             <h1>لوحة التحكم</h1>
             @if (!empty($custom_errors))

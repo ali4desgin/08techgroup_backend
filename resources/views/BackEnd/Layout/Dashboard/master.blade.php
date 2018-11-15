@@ -1,4 +1,8 @@
+<?php
 
+$notification_count = \App\Notifications::nofitications_count();
+
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,7 +16,7 @@
         <link rel="stylesheet" href="//cdn.rawgit.com/morteza/bootstrap-rtl/v3.3.4/dist/css/bootstrap-rtl.min.css">
         <!-- font awesome -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('backend/css/main.css') }}" />
         
@@ -40,11 +44,26 @@
                 <li><a href="{{ url('adminpanel/customers') }}"> <i 
 					class="fa fa-users"></i> ادارة العملاء</a></li>
                 <li><a href="{{ url('adminpanel/packages') }}"> <i 
-					class="fa fa-home"></i> ادارة الباقات</a></li>
-                <li><a href="{{ url('adminpanel/daily_profits') }}"> <i class="fa fa-home"></i>   الارباح اليومية</a></li>
-                <li><a href="#"> <i class="fa fa-home"></i> سجلات الدفع</a></li>
-                <li><a href="#"> <i class="fa fa-home"></i>   ادارة العناوين</a></li>
-                <li><a href="{{ url('adminpanel/content') }}"> <i class="fa fa-home"></i> ادارة المحتوى</a></li>
+					class="fa fa-bars"></i> ادارة الباقات</a></li>
+                <li><a href="{{ url('adminpanel/paymentsgateways') }}"> <i class="fa fa-money-bill-alt"></i>   ادارة بوابات الدفع </a></li>
+                <li><a href="{{ url('adminpanel/payments') }}"> <i class="fa fa-asterisk"></i> سجلات الدفع</a></li>
+                <li><a href="{{ url('adminpanel/advertisers') }}"> <i class="fa fa-link"></i>   ادارة المعلينين</a></li>
+                <li><a href="{{ url('adminpanel/content') }}"> <i class="fab fa-windows"></i> ادارة المحتوى</a></li>
+				<li><a href="{{ url('adminpanel/notifiactions') }}"> <i class="fa fa-bell"></i>
+					
+					 الاشعارات 
+				 <span class="badge 
+				 @if($notification_count>0)
+				 	alert-danger
+				 @endif
+				  ">
+				 	
+					{{  $notification_count }}
+					
+				 </span>
+				 </a>
+				 </li>
+				<li><a href="{{ url('adminpanel/logout') }}" class="confirm"> <i class="fa fa-sign-out-alt"></i>  تسجيل خروج</a></li>
             </ul>
             
             </div><!-- /.navbar-collapse -->
@@ -64,6 +83,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
         <!-- Latest compiled and minified js -->
         <script src="{{ asset('backend/js/main.js') }}"></script>
